@@ -1,0 +1,376 @@
+const WebSocket = require('ws');
+const axios = require('axios');
+require('dotenv').config();
+
+class AngelOneService {
+  constructor() {
+    this.baseUrl = 'https://apiconnect.angelone.in';
+    this.ws = null;
+    this.isConnected = false;
+    this.subscribers = new Map(); // symbol -> Set of callback functions
+    this.reconnectAttempts = 0;
+    this.maxReconnectAttempts = 5;
+    this.reconnectDelay = 3000;
+    this.heartbeatInterval = null;
+    
+    // Load credentials from environment
+    this.jwtToken = process.env.ANGELONE_JWT;
+    this.apiKey = process.env.ANGELONE_API_KEY;
+    this.clientCode = process.env.ANGELONE_CLIENT_CODE;
+    this.feedToken = process.env.ANGELONE_FEED_TOKEN;
+  }
+
+  /**
+   * Initialize connection to Angel One
+   */
+  async initialize() {
+    try {
+      // Verify credentials are present
+      if (!this.jwtToken || !this.apiKey || !this.clientCode || !this.feedToken) {
+        console.log('⚠️  Angel One credentials not configured - WebSocket disabled');
+        console.log('💡 Required in .env: ANGELONE_JWT, ANGELONE_API_KEY, ANGELONE_CLIENT_CODE, ANGELONE_FEED_TOKEN');
+        return false;
+      }
+      
+      console.log('✅ Angel One API session initialized');
+      console.log(`📝 Client Code: ${this.clientCode}`);
+      return true;
+    } catch (error) {
+      console.error('❌ Angel One initialization error:', error.message);
+      return false;
+    }
+  }
+
+  /**
+   * Connect to Angel One WebSocket for real-time data
+   */
+  connectWebSocket() {
+    if (this.ws && this.isConnected) {
+      console.log('WebSocket already connected');
+      return;
+    }
+
+    // Only connect if we have valid credentials
+    if (!this.jwtToken || !this.feedToken || !this.apiKey || !this.clientCode) {
+      console.log('⚠️  Angel One credentials not configured - WebSocket disabled');
+      console.log('💡 Set ANGELONE_JWT, ANGELONE_API_KEY, ANGELONE_CLIENT_CODE, ANGELONE_FEED_TOKEN in .env');
+      console.log('📝 Backend will work in mock mode for development');
+      return;
+    }
+
+    const wsUrl = `wss://smartapisocket.angelone.in/smart-stream`;
+    
+    console.log('🔌 Connecting to Angel One WebSocket...');
+    this.ws = new WebSocket(wsUrl);
+
+    this.ws.on('open', () => {
+      console.log('✅ Angel One WebSocket connected');
+      this.isConnected = true;
+      this.reconnectAttempts = 0;
+      
+      // Authenticate WebSocket
+      this.authenticateWebSocket();
+      
+      // Start heartbeat
+      this.startHeartbeat();
+    });
+
+    this.ws.on('message', (data) => {
+      this.handleMessage(data);
+    });
+
+    this.ws.on('close', () => {
+      console.log('⚠️ Angel One WebSocket disconnected');
+      this.isConnected = false;
+      this.clearHeartbeat();
+      this.attemptReconnect();
+    });
+
+    this.ws.on('error', (error) => {
+      console.error('❌ WebSocket error:', error.message);
+    });
+  }
+
+  /**
+   * Authenticate WebSocket connection using SmartAPI protocol
+   */
+  authenticateWebSocket() {
+    const correlationID = `auth_${Date.now()}`;
+    
+    const authMessage = {
+      correlationID: correlationID,
+      action: 1, // Action 1 = Authentication
+      params: {
+        mode: 3, // Mode 3 = SNAP_QUOTE (full data)
+        tokenList: [
+          {
+            exchangeType: 1, // 1=NSE
+            tokens: [] // Empty for initial auth
+          }
+        ]
+      }
+    };
+    
+    console.log('🔐 Authenticating WebSocket...');
+    this.ws.send(JSON.stringify(authMessage));
+    
+    // Set authorization header for subsequent messages
+    this.authHeader = {
+      Authorization: `Bearer ${this.feedToken}`,
+      'x-api-key': this.apiKey,
+      'x-client-code': this.clientCode,
+      'x-feed-token': this.feedToken
+    };
+  }
+
+  /**
+   * Send message to WebSocket
+   */
+  sendMessage(message) {
+    if (this.ws && this.isConnected) {
+      this.ws.send(JSON.stringify(message));
+    }
+  }
+
+  /**
+   * Subscribe to symbols for real-time data
+   * @param {Array} tokens - Array of {exchange, token} objects
+   * @param {String} mode - 1=LTP, 2=QUOTE, 3=SNAP_QUOTE
+   */
+  subscribeToSymbols(tokens, mode = 3) {
+    if (!this.isConnected) {
+      console.log('WebSocket not connected, attempting to connect...');
+      this.connectWebSocket();
+      
+      // Retry subscription after connection
+      setTimeout(() => this.subscribeToSymbols(tokens, mode), 2000);
+      return;
+    }
+
+    // Format: { "NSE": ["token1", "token2"], "NFO": ["token3"] }
+    const exchangeTokens = {};
+    
+    tokens.forEach(({ exchange, token }) => {
+      if (!exchangeTokens[exchange]) {
+        exchangeTokens[exchange] = [];
+      }
+      exchangeTokens[exchange].push(token.toString());
+    });
+
+    const subscribeMessage = {
+      action: 1,
+      params: {
+        mode: mode, // 1=LTP, 2=QUOTE, 3=SNAP_QUOTE
+        tokenList: Object.entries(exchangeTokens).map(([exchange, tokens]) => ({
+          exchangeType: this.getExchangeType(exchange),
+          tokens: tokens
+        }))
+      }
+    };
+
+    console.log('📡 Subscribing to symbols:', JSON.stringify(subscribeMessage, null, 2));
+    this.sendMessage(subscribeMessage);
+  }
+
+  /**
+   * Unsubscribe from symbols
+   */
+  unsubscribeFromSymbols(tokens) {
+    if (!this.isConnected) return;
+
+    const exchangeTokens = {};
+    
+    tokens.forEach(({ exchange, token }) => {
+      if (!exchangeTokens[exchange]) {
+        exchangeTokens[exchange] = [];
+      }
+      exchangeTokens[exchange].push(token.toString());
+    });
+
+    const unsubscribeMessage = {
+      action: 0,
+      params: {
+        mode: 3,
+        tokenList: Object.entries(exchangeTokens).map(([exchange, tokens]) => ({
+          exchangeType: this.getExchangeType(exchange),
+          tokens: tokens
+        }))
+      }
+    };
+
+    this.sendMessage(unsubscribeMessage);
+  }
+
+  /**
+   * Get exchange type code for Angel One API
+   */
+  getExchangeType(exchange) {
+    const exchangeMap = {
+      'NSE': 1,
+      'NFO': 2,
+      'BSE': 3,
+      'BFO': 4,
+      'MCX': 5,
+      'NCDS': 7,
+      'CDS': 13
+    };
+    return exchangeMap[exchange] || 1;
+  }
+
+  /**
+   * Handle incoming WebSocket messages
+   */
+  handleMessage(data) {
+    try {
+      const message = JSON.parse(data.toString());
+      
+      // Handle different message types
+      if (message.action === 'heartbeat') {
+        // Heartbeat response
+        return;
+      }
+      
+      // Broadcast to subscribers
+      this.subscribers.forEach((callback) => {
+        callback(message);
+      });
+      
+    } catch (error) {
+      // Binary data - parse tick data
+      this.parseBinaryData(data);
+    }
+  }
+
+  /**
+   * Parse binary tick data from Angel One
+   */
+  parseBinaryData(buffer) {
+    try {
+      // Angel One sends binary data in specific format
+      // This is a simplified parser - you may need to adjust based on actual format
+      
+      const view = new DataView(buffer.buffer);
+      let offset = 0;
+      
+      while (offset < buffer.length) {
+        const packet = {
+          token: view.getUint32(offset, true),
+          ltp: view.getFloat64(offset + 4, true),
+          high: view.getFloat64(offset + 12, true),
+          low: view.getFloat64(offset + 20, true),
+          open: view.getFloat64(offset + 28, true),
+          close: view.getFloat64(offset + 36, true),
+          volume: view.getUint32(offset + 44, true),
+          timestamp: view.getFloat64(offset + 48, true)
+        };
+        
+        // Broadcast to subscribers
+        this.subscribers.forEach((callback) => {
+          callback(packet);
+        });
+        
+        offset += 56; // Move to next packet
+      }
+    } catch (error) {
+      console.error('Error parsing binary data:', error);
+    }
+  }
+
+  /**
+   * Get market quote data using REST API
+   */
+  async getQuoteData(exchangeTokens) {
+    try {
+      const response = await axios.post(
+        `${this.baseUrl}/rest/secure/angelbroking/market/v1/quote/`,
+        {
+          mode: 'FULL',
+          exchangeTokens: exchangeTokens
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${this.jwtToken}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-UserType': 'USER',
+            'X-SourceID': 'WEB',
+            'X-ClientLocalIP': 'CLIENT_LOCAL_IP',
+            'X-ClientPublicIP': 'CLIENT_PUBLIC_IP',
+            'X-MACAddress': 'MAC_ADDRESS',
+            'X-PrivateKey': this.apiKey
+          }
+        }
+      );
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching quote data:', error.response?.data || error.message);
+      throw error;
+    }
+  }
+
+  /**
+   * Add subscriber for real-time data
+   */
+  addSubscriber(id, callback) {
+    this.subscribers.set(id, callback);
+  }
+
+  /**
+   * Remove subscriber
+   */
+  removeSubscriber(id) {
+    this.subscribers.delete(id);
+  }
+
+  /**
+   * Start heartbeat to keep connection alive
+   */
+  startHeartbeat() {
+    this.heartbeatInterval = setInterval(() => {
+      if (this.isConnected) {
+        this.sendMessage({ action: 'heartbeat', params: {} });
+      }
+    }, 30000); // Every 30 seconds
+  }
+
+  /**
+   * Clear heartbeat interval
+   */
+  clearHeartbeat() {
+    if (this.heartbeatInterval) {
+      clearInterval(this.heartbeatInterval);
+      this.heartbeatInterval = null;
+    }
+  }
+
+  /**
+   * Attempt to reconnect WebSocket
+   */
+  attemptReconnect() {
+    if (this.reconnectAttempts < this.maxReconnectAttempts) {
+      this.reconnectAttempts++;
+      console.log(`🔄 Attempting to reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`);
+      
+      setTimeout(() => {
+        this.connectWebSocket();
+      }, this.reconnectDelay * this.reconnectAttempts);
+    } else {
+      console.error('❌ Max reconnection attempts reached');
+    }
+  }
+
+  /**
+   * Close WebSocket connection
+   */
+  disconnect() {
+    this.clearHeartbeat();
+    if (this.ws) {
+      this.ws.close();
+      this.ws = null;
+      this.isConnected = false;
+    }
+  }
+}
+
+module.exports = new AngelOneService();

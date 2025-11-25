@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>WebSocket Connection Test</h1>
+    <div id="status">Connecting...</div>
+    <div id="data"></div>
+    <button onclick="subscribeToSymbol()">Subscribe to NIFTY 50</button>
+    <script>
+        const socket = io('http://localhost:5000');
+        const dataDiv = document.getElementById('data');
+        const statusDiv = document.getElementById('status');
+
+        socket.on('connect', () => {
+            statusDiv.innerHTML = 'Connected ✅';
+            statusDiv.style.color = 'green';
+            console.log('Connected to WebSocket');
+        });
+
+        socket.on('disconnect', () => {
+            statusDiv.innerHTML = 'Disconnected ❌';
+            statusDiv.style.color = 'red';
+            console.log('Disconnected from WebSocket');
+        });
+
+        socket.on('positionUpdate', (data) => {
+            console.log('Received positionUpdate:', data);
+            const pre = document.createElement('pre');
+            pre.textContent = JSON.stringify(data, null, 2);
+            dataDiv.appendChild(pre);
+        });
+
+        socket.on('marketData', (data) => {
+            console.log('Received marketData:', data);
+            const pre = document.createElement('pre');
+            pre.textContent = 'Market Data: ' + JSON.stringify(data, null, 2);
+            dataDiv.appendChild(pre);
+        });
+
+        function subscribeToSymbol() {
+            console.log('Subscribing to NIFTY 50');
+            socket.emit('subscribePositions', {
+                brokerId: 'test',
+                tokens: [
+                    { exchange: 'NSE', token: '99926000' }, // NIFTY 50
+                    { exchange: 'NSE', token: '99926009' }, // NIFTY BANK
+                    { exchange: 'NSE', token: '3499' }      // TATASTEEL
+                ],
+                updateInterval: 5
+            });
+        }
+
+        // Auto subscribe on load
+        setTimeout(subscribeToSymbol, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+[00:00:01.854] Server  LOG      ✓ Ready in 1233ms
+[00:00:01.870] Browser LOG     
+🔵 ========== MARKET CONTEXT: positionUpdate received ==========
+[00:00:01.870] Browser LOG     🔵 Raw payload type: object
+[00:00:01.870] Browser LOG     🔵 Full payload: {
+  "positions": [
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 26000,
+      "ltp": 18940.6,
+      "low": 18883.78,
+      "high": 19103.85,
+      "open": 19065.76,
+      "close": 19027.66,
+      "netChange": -106.11,
+      "percentChange": -0.56,
+      "volume": 2862,
+      "timestamp": "2025-11-25T10:04:38.603Z",
+      "symbol": "NIFTY",
+      "symbolName": "NIFTY",
+      "name": "NIFTY",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 26009,
+      "ltp": 43844.65,
+      "low": 43713.12,
+      "high": 44112.79,
+      "open": 44024.83,
+      "close": 43936.87,
+      "netChange": -136.2,
+      "percentChange": -0.31,
+      "volume": 3317,
+      "timestamp": "2025-11-25T10:04:38.603Z",
+      "symbol": "BANKNIFTY",
+      "symbolName": "BANKNIFTY",
+      "name": "BANKNIFTY",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 2885,
+      "ltp": 2396.39,
+      "low": 2389.2,
+      "high": 2397.32,
+      "open": 2392.54,
+      "close": 2387.76,
+      "netChange": 6.24,
+      "percentChange": 0.26,
+      "volume": 4132,
+      "timestamp": "2025-11-25T10:04:38.603Z",
+      "symbol": "RELIANCE-EQ",
+      "symbolName": "RELIANCE",
+      "name": "RELIANCE",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 3045,
+      "ltp": 604.14,
+      "low": 602.33,
+      "high": 606.38,
+      "open": 605.17,
+      "close": 603.97,
+      "netChange": -0.43,
+      "percentChange": -0.07,
+      "volume": 4114,
+      "timestamp": "2025-11-25T10:04:38.603Z",
+      "symbol": "SBIN-EQ",
+      "symbolName": "SBIN",
+      "name": "SBIN",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 99926012,
+      "ltp": 135.46,
+      "low": 134.93,
+      "high": 135.46,
+      "open": 135.06,
+      "close": 134.8,
+      "netChange": 0.53,
+      "percentChange": 0.39,
+      "volume": 4926,
+      "timestamp": "2025-11-25T10:04:38.603Z",
+      "symbol": "Nifty 100",
+      "symbolName": "NIFTY 100",
+      "name": "NIFTY 100",
+      "lot_size": 1,
+      "exchange": "NSE"
+    }
+  ]
+}
+[00:00:01.870] Browser LOG     🔵 Extracted 5 positions
+[00:00:01.870] Browser LOG     
+🔵 [Position 0]:
+[00:00:01.870] Browser LOG        Symbol: "NIFTY"
+[00:00:01.870] Browser LOG        Token: 26000
+[00:00:01.870] Browser LOG        LTP: 18940.6, Open: 19065.76, High: 19103.85, Low: 18883.78
+[00:00:01.870] Browser LOG     
+🔵 [Position 1]:
+[00:00:01.870] Browser LOG        Symbol: "BANKNIFTY"
+[00:00:01.870] Browser LOG        Token: 26009
+[00:00:01.870] Browser LOG        LTP: 43844.65, Open: 44024.83, High: 44112.79, Low: 43713.12
+[00:00:01.870] Browser LOG     
+🔵 [Position 2]:
+[00:00:01.870] Browser LOG        Symbol: "RELIANCE-EQ"
+[00:00:01.870] Browser LOG        Token: 2885
+[00:00:01.870] Browser LOG        LTP: 2396.39, Open: 2392.54, High: 2397.32, Low: 2389.2
+[00:00:01.870] Browser LOG     
+🔵 [Position 3]:
+[00:00:01.870] Browser LOG        Symbol: "SBIN-EQ"
+[00:00:01.870] Browser LOG        Token: 3045
+[00:00:01.870] Browser LOG        LTP: 604.14, Open: 605.17, High: 606.38, Low: 602.33
+[00:00:01.870] Browser LOG     
+🔵 [Position 4]:
+[00:00:01.870] Browser LOG        Symbol: "Nifty 100"
+[00:00:01.870] Browser LOG        Token: 99926012
+[00:00:01.870] Browser LOG        LTP: 135.46, Open: 135.06, High: 135.46, Low: 134.93
+[00:00:01.870] Browser LOG     
+🔵 Current symbols keys BEFORE update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "NIFTY"
+[00:00:01.870] Browser LOG        Token: 26000
+[00:00:01.870] Browser LOG        💰 LTP: 18940.6, Open: 19065.76
+[00:00:01.870] Browser LOG        📊 High: 19103.85, Low: 18883.78, Close: 19027.66
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["NIFTY"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "BANKNIFTY"
+[00:00:01.870] Browser LOG        Token: 26009
+[00:00:01.870] Browser LOG        💰 LTP: 43844.65, Open: 44024.83
+[00:00:01.870] Browser LOG        📊 High: 44112.79, Low: 43713.12, Close: 43936.87
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["BANKNIFTY"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "RELIANCE-EQ"
+[00:00:01.870] Browser LOG        Token: 2885
+[00:00:01.870] Browser LOG        💰 LTP: 2396.39, Open: 2392.54
+[00:00:01.870] Browser LOG        📊 High: 2397.32, Low: 2389.2, Close: 2387.76
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["RELIANCE-EQ"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "SBIN-EQ"
+[00:00:01.870] Browser LOG        Token: 3045
+[00:00:01.870] Browser LOG        💰 LTP: 604.14, Open: 605.17
+[00:00:01.870] Browser LOG        📊 High: 606.38, Low: 602.33, Close: 603.97
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["SBIN-EQ"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "Nifty 100"
+[00:00:01.870] Browser LOG        Token: 99926012
+[00:00:01.870] Browser LOG        💰 LTP: 135.46, Open: 135.06
+[00:00:01.870] Browser LOG        📊 High: 135.46, Low: 134.93, Close: 134.8
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["Nifty 100"]
+[00:00:01.870] Browser LOG     
+🔵 Updated symbols keys AFTER update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.870] Browser LOG     🔵 Total symbols in store: 8
+[00:00:01.870] Browser LOG     🔵 ========== Market context update complete ==========
+
+[00:00:01.870] Browser LOG     
+🔵 Current symbols keys BEFORE update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "NIFTY"
+[00:00:01.870] Browser LOG        Token: 26000
+[00:00:01.870] Browser LOG        💰 LTP: 18940.6, Open: 19065.76
+[00:00:01.870] Browser LOG        📊 High: 19103.85, Low: 18883.78, Close: 19027.66
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["NIFTY"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "BANKNIFTY"
+[00:00:01.870] Browser LOG        Token: 26009
+[00:00:01.870] Browser LOG        💰 LTP: 43844.65, Open: 44024.83
+[00:00:01.870] Browser LOG        📊 High: 44112.79, Low: 43713.12, Close: 43936.87
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["BANKNIFTY"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "RELIANCE-EQ"
+[00:00:01.870] Browser LOG        Token: 2885
+[00:00:01.870] Browser LOG        💰 LTP: 2396.39, Open: 2392.54
+[00:00:01.870] Browser LOG        📊 High: 2397.32, Low: 2389.2, Close: 2387.76
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["RELIANCE-EQ"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "SBIN-EQ"
+[00:00:01.870] Browser LOG        Token: 3045
+[00:00:01.870] Browser LOG        💰 LTP: 604.14, Open: 605.17
+[00:00:01.870] Browser LOG        📊 High: 606.38, Low: 602.33, Close: 603.97
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["SBIN-EQ"]
+[00:00:01.870] Browser LOG     
+🔵 📝 Storing position with key: "Nifty 100"
+[00:00:01.870] Browser LOG        Token: 99926012
+[00:00:01.870] Browser LOG        💰 LTP: 135.46, Open: 135.06
+[00:00:01.870] Browser LOG        📊 High: 135.46, Low: 134.93, Close: 134.8
+[00:00:01.870] Browser LOG        ✅ Stored successfully in symbols["Nifty 100"]
+[00:00:01.870] Browser LOG     
+🔵 Updated symbols keys AFTER update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.870] Browser LOG     🔵 Total symbols in store: 8
+[00:00:01.871] Browser LOG     🔵 ========== Market context update complete ==========
+
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 CE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":0,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 : {"availableKeys":[],"exactMatch":true,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":1,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 PE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":2,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 CE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":0,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 : {"availableKeys":[],"exactMatch":true,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":1,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 PE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":135.46,"idx":2,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 CE"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 CE"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 PE"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 PE"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":134.8,"exchange":"NSE","high":135.46,"lot_size":1,"low":134.93,"ltp":135.46,"netChange":0.53,"open":135.06,"percentChange":0.39,"timestamp":"2025-11-25T10:04:38.603Z","token":99926012,"volume":4926}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=135.46, Open=135.06, Close=134.8
+[00:00:01.871] Browser LOG     [PriceChart] Nifty 100 25NOV25 47000 CE {"allMarketKeys":["Nifty 100"],"close":134.8,"hasMarketData":true,"high":135.46,"low":134.93,"ltp":135.46,"marketKey":"Nifty 100","netChange":0.53,"open":135.06,"percentChange":0.39,"symbolKey":"NIFTY 100"}
+[00:00:01.871] Browser LOG     [PriceChart] Nifty 100 {"allMarketKeys":["Nifty 100"],"close":134.8,"hasMarketData":true,"high":135.46,"low":134.93,"ltp":135.46,"marketKey":"Nifty 100","netChange":0.53,"open":135.06,"percentChange":0.39,"symbolKey":"NIFTY 100"}
+[00:00:01.871] Browser LOG     [PriceChart] Nifty 100 25NOV25 47000 PE {"allMarketKeys":["Nifty 100"],"close":134.8,"hasMarketData":true,"high":135.46,"low":134.93,"ltp":135.46,"marketKey":"Nifty 100","netChange":0.53,"open":135.06,"percentChange":0.39,"symbolKey":"NIFTY 100"}
+[00:00:01.871] Browser LOG     
+🔵 ========== MARKET CONTEXT: positionUpdate received ==========
+[00:00:01.871] Browser LOG     🔵 Raw payload type: object
+[00:00:01.871] Browser LOG     🔵 Full payload: {
+  "positions": [
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 26000,
+      "ltp": 18956.68,
+      "low": 18899.81,
+      "high": 18997.42,
+      "open": 18959.54,
+      "close": 18921.66,
+      "netChange": 16.08,
+      "percentChange": 0.08,
+      "volume": 3888,
+      "timestamp": "2025-11-25T10:04:41.104Z",
+      "symbol": "NIFTY",
+      "symbolName": "NIFTY",
+      "name": "NIFTY",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 26009,
+      "ltp": 43749.62,
+      "low": 43618.37,
+      "high": 43976.18,
+      "open": 43888.49,
+      "close": 43800.81,
+      "netChange": -95.03,
+      "percentChange": -0.22,
+      "volume": 4803,
+      "timestamp": "2025-11-25T10:04:41.104Z",
+      "symbol": "BANKNIFTY",
+      "symbolName": "BANKNIFTY",
+      "name": "BANKNIFTY",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 2885,
+      "ltp": 2399.57,
+      "low": 2392.37,
+      "high": 2403.58,
+      "open": 2398.79,
+      "close": 2393.99,
+      "netChange": 3.18,
+      "percentChange": 0.13,
+      "volume": 3047,
+      "timestamp": "2025-11-25T10:04:41.104Z",
+      "symbol": "RELIANCE-EQ",
+      "symbolName": "RELIANCE",
+      "name": "RELIANCE",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 3045,
+      "ltp": 599.22,
+      "low": 597.42,
+      "high": 605.95,
+      "open": 604.74,
+      "close": 603.54,
+      "netChange": -4.92,
+      "percentChange": -0.81,
+      "volume": 4269,
+      "timestamp": "2025-11-25T10:04:41.104Z",
+      "symbol": "SBIN-EQ",
+      "symbolName": "SBIN",
+      "name": "SBIN",
+      "lot_size": 1,
+      "exchange": "NSE"
+    },
+    {
+      "mode": 1,
+      "exchangeType": "NSE",
+      "token": 99926012,
+      "ltp": 136.6,
+      "low": 135.46,
+      "high": 136.6,
+      "open": 135.6,
+      "close": 135.32,
+      "netChange": 1.14,
+      "percentChange": 0.84,
+      "volume": 2373,
+      "timestamp": "2025-11-25T10:04:41.104Z",
+      "symbol": "Nifty 100",
+      "symbolName": "NIFTY 100",
+      "name": "NIFTY 100",
+      "lot_size": 1,
+      "exchange": "NSE"
+    }
+  ]
+}
+[00:00:01.871] Browser LOG     🔵 Extracted 5 positions
+[00:00:01.871] Browser LOG     
+🔵 [Position 0]:
+[00:00:01.871] Browser LOG        Symbol: "NIFTY"
+[00:00:01.871] Browser LOG        Token: 26000
+[00:00:01.871] Browser LOG        LTP: 18956.68, Open: 18959.54, High: 18997.42, Low: 18899.81
+[00:00:01.871] Browser LOG     
+🔵 [Position 1]:
+[00:00:01.871] Browser LOG        Symbol: "BANKNIFTY"
+[00:00:01.871] Browser LOG        Token: 26009
+[00:00:01.871] Browser LOG        LTP: 43749.62, Open: 43888.49, High: 43976.18, Low: 43618.37
+[00:00:01.871] Browser LOG     
+🔵 [Position 2]:
+[00:00:01.871] Browser LOG        Symbol: "RELIANCE-EQ"
+[00:00:01.871] Browser LOG        Token: 2885
+[00:00:01.871] Browser LOG        LTP: 2399.57, Open: 2398.79, High: 2403.58, Low: 2392.37
+[00:00:01.871] Browser LOG     
+🔵 [Position 3]:
+[00:00:01.871] Browser LOG        Symbol: "SBIN-EQ"
+[00:00:01.871] Browser LOG        Token: 3045
+[00:00:01.871] Browser LOG        LTP: 599.22, Open: 604.74, High: 605.95, Low: 597.42
+[00:00:01.871] Browser LOG     
+🔵 [Position 4]:
+[00:00:01.871] Browser LOG        Symbol: "Nifty 100"
+[00:00:01.871] Browser LOG        Token: 99926012
+[00:00:01.871] Browser LOG        LTP: 136.6, Open: 135.6, High: 136.6, Low: 135.46
+[00:00:01.871] Browser LOG     
+🔵 Current symbols keys BEFORE update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "NIFTY"
+[00:00:01.871] Browser LOG        Token: 26000
+[00:00:01.871] Browser LOG        💰 LTP: 18956.68, Open: 18959.54
+[00:00:01.871] Browser LOG        📊 High: 18997.42, Low: 18899.81, Close: 18921.66
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["NIFTY"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "BANKNIFTY"
+[00:00:01.871] Browser LOG        Token: 26009
+[00:00:01.871] Browser LOG        💰 LTP: 43749.62, Open: 43888.49
+[00:00:01.871] Browser LOG        📊 High: 43976.18, Low: 43618.37, Close: 43800.81
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["BANKNIFTY"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "RELIANCE-EQ"
+[00:00:01.871] Browser LOG        Token: 2885
+[00:00:01.871] Browser LOG        💰 LTP: 2399.57, Open: 2398.79
+[00:00:01.871] Browser LOG        📊 High: 2403.58, Low: 2392.37, Close: 2393.99
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["RELIANCE-EQ"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "SBIN-EQ"
+[00:00:01.871] Browser LOG        Token: 3045
+[00:00:01.871] Browser LOG        💰 LTP: 599.22, Open: 604.74
+[00:00:01.871] Browser LOG        📊 High: 605.95, Low: 597.42, Close: 603.54
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["SBIN-EQ"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "Nifty 100"
+[00:00:01.871] Browser LOG        Token: 99926012
+[00:00:01.871] Browser LOG        💰 LTP: 136.6, Open: 135.6
+[00:00:01.871] Browser LOG        📊 High: 136.6, Low: 135.46, Close: 135.32
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["Nifty 100"]
+[00:00:01.871] Browser LOG     
+🔵 Updated symbols keys AFTER update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🔵 Total symbols in store: 8
+[00:00:01.871] Browser LOG     🔵 ========== Market context update complete ==========
+
+[00:00:01.871] Browser LOG     
+🔵 Current symbols keys BEFORE update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "NIFTY"
+[00:00:01.871] Browser LOG        Token: 26000
+[00:00:01.871] Browser LOG        💰 LTP: 18956.68, Open: 18959.54
+[00:00:01.871] Browser LOG        📊 High: 18997.42, Low: 18899.81, Close: 18921.66
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["NIFTY"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "BANKNIFTY"
+[00:00:01.871] Browser LOG        Token: 26009
+[00:00:01.871] Browser LOG        💰 LTP: 43749.62, Open: 43888.49
+[00:00:01.871] Browser LOG        📊 High: 43976.18, Low: 43618.37, Close: 43800.81
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["BANKNIFTY"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "RELIANCE-EQ"
+[00:00:01.871] Browser LOG        Token: 2885
+[00:00:01.871] Browser LOG        💰 LTP: 2399.57, Open: 2398.79
+[00:00:01.871] Browser LOG        📊 High: 2403.58, Low: 2392.37, Close: 2393.99
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["RELIANCE-EQ"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "SBIN-EQ"
+[00:00:01.871] Browser LOG        Token: 3045
+[00:00:01.871] Browser LOG        💰 LTP: 599.22, Open: 604.74
+[00:00:01.871] Browser LOG        📊 High: 605.95, Low: 597.42, Close: 603.54
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["SBIN-EQ"]
+[00:00:01.871] Browser LOG     
+🔵 📝 Storing position with key: "Nifty 100"
+[00:00:01.871] Browser LOG        Token: 99926012
+[00:00:01.871] Browser LOG        💰 LTP: 136.6, Open: 135.6
+[00:00:01.871] Browser LOG        📊 High: 136.6, Low: 135.46, Close: 135.32
+[00:00:01.871] Browser LOG        ✅ Stored successfully in symbols["Nifty 100"]
+[00:00:01.871] Browser LOG     
+🔵 Updated symbols keys AFTER update: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🔵 Total symbols in store: 8
+[00:00:01.871] Browser LOG     🔵 ========== Market context update complete ==========
+
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 CE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":0,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 : {"availableKeys":[],"exactMatch":true,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":1,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 PE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":2,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 CE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":0,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 : {"availableKeys":[],"exactMatch":true,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":1,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser DEBUG   [PriceCharts] Resolution for Nifty 100 25NOV25 47000 PE : {"availableKeys":[],"exactMatch":false,"finalMarketKey":"Nifty 100","finalResolvedLtp":136.6,"idx":2,"resolvedKey":"Nifty 100"}
+[00:00:01.871] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 CE"] Calculating display values
+[00:00:01.871] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.871] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.871] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.871] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 CE"] Calculating display values
+[00:00:01.872] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.872] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.872] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.872] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     
+🟢 [PriceChart "Nifty 100"] Calculating display values
+[00:00:01.872] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.872] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.872] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.872] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     
+🟢 [PriceChart "Nifty 100"] Calculating display values
+[00:00:01.872] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.872] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.872] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.872] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 PE"] Calculating display values
+[00:00:01.872] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.872] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.872] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.872] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     
+🟢 [PriceChart "Nifty 100 25NOV25 47000 PE"] Calculating display values
+[00:00:01.872] Browser LOG     🟢 Symbol key: "NIFTY 100"
+[00:00:01.872] Browser LOG     🟢 All market symbols: ["NIFTY 50","BANKNIFTY","RELIANCE","SBIN","NIFTY","RELIANCE-EQ","SBIN-EQ","Nifty 100"]
+[00:00:01.872] Browser LOG     🟢 Market data: {"close":135.32,"exchange":"NSE","high":136.6,"lot_size":1,"low":135.46,"ltp":136.6,"netChange":1.14,"open":135.6,"percentChange":0.84,"timestamp":"2025-11-25T10:04:41.104Z","token":99926012,"volume":2373}
+[00:00:01.872] Browser LOG     🟢 Extracted: LTP=136.6, Open=135.6, Close=135.32
+[00:00:01.872] Browser LOG     [PriceChart] Nifty 100 25NOV25 47000 CE {"allMarketKeys":["Nifty 100"],"close":135.32,"hasMarketData":true,"high":136.6,"low":135.46,"ltp":136.6,"marketKey":"Nifty 100","netChange":1.14,"open":135.6,"percentChange":0.84,"symbolKey":"NIFTY 100"}
+[00:00:01.872] Browser LOG     [PriceChart] Nifty 100 {"allMarketKeys":["Nifty 100"],"close":135.32,"hasMarketData":true,"high":136.6,"low":135.46,"ltp":136.6,"marketKey":"Nifty 100","netChange":1.14,"open":135.6,"percentChange":0.84,"symbolKey":"NIFTY 100"}
+[00:00:01.872] Browser LOG     [PriceChart] Nifty 100 25NOV25 47000 PE {"allMarketKeys":["Nifty 100"],"close":135.32,"hasMarketData":true,"high":136.6,"low":135.46,"ltp":136.6,"marketKey":"Nifty 100","netChange":1.14,"open":135.6,"percentChange":0.84,"symbolKey":"NIFTY 100"}
+[00:00:01.872] Browser LOG     Market: disconnected from position WebSocket server transport close
+[00:00:01.872] Browser ERROR   Market: socket connect_error {"description":{"isTrusted":true},"type":"TransportError"}
+[00:00:01.872] Browser ERROR   Market: socket connect_error {"description":{"isTrusted":true},"type":"TransportError"}
+[00:00:04.904] Server  LOG      ○ Compiling / ...
+[00:00:06.652] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.262] Browser LOG     Loading trading mode from localStorage: live
+[00:00:07.262] Browser LOG     Fetching positions with URL: http://localhost:5000/api/positions?tradingMode=live
+[00:00:07.262] Browser LOG     Fetching positions with URL: http://localhost:5000/api/positions?tradingMode=live
+[00:00:07.262] Browser LOG     Saving trading mode to localStorage: live
+[00:00:07.262] Browser LOG     Fetching positions with URL: http://localhost:5000/api/positions?tradingMode=live
+[00:00:07.262] Browser LOG     Fetching positions with URL: http://localhost:5000/api/positions?tradingMode=live
+[00:00:07.262] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.262] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:07.262] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764065100142}
+[00:00:10.263] Browser ERROR   Market: socket connect_error {"description":{"isTrusted":true},"type":"TransportError"}
+[00:00:10.264] Browser ERROR   Error loading column settings from backend: {}
+[00:00:10.264] Browser ERROR   Error fetching positions: {}
+[00:00:10.264] Browser ERROR   Error fetching brokers: {}
+[00:00:10.264] Browser ERROR   Error loading column settings from backend: {}
+[00:00:12.265] Browser ERROR   Error fetching positions: {}
+[00:00:12.265] Browser ERROR   Error fetching brokers: {}
+[00:00:12.265] Browser ERROR   Error fetching positions: {}
+[00:00:14.270] Browser ERROR   Error fetching positions: {}
+[00:00:15.267] Browser ERROR   Market: socket connect_error {"description":{"isTrusted":true},"type":"TransportError"}
+[00:00:21.273] Browser LOG     Market: connected to position WebSocket server
+[00:00:25.267] Browser LOG     Market: disconnected from position WebSocket server transport close

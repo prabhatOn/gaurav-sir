@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symbol Select Test</title>
+</head>
+<body>
+    <h1>Test Symbol Categorization</h1>
+    <div id="results"></div>
+    
+    <script>
+        // Test data from API
+        const testData = [
+            { symbol: "Nifty 50", segment: "Index", instrument_type: "AMXIDX" },
+            { symbol: "Nifty Bank", segment: "Index", instrument_type: "AMXIDX" },
+            { symbol: "RELIANCE-EQ", segment: "Equity", instrument_type: "" },
+            { symbol: "TCS-EQ", segment: "Equity", instrument_type: "" },
+        ];
+        
+        function categorize(item) {
+            const segment = (item.segment || '').toString().toUpperCase();
+            const instrumentType = (item.instrument_type || '').toString().toUpperCase();
+            
+            const isIndex = segment === 'INDEX' || 
+                          instrumentType === 'INDEX' || 
+                          instrumentType === 'AMXIDX' ||
+                          instrumentType.includes('IDX');
+            
+            return isIndex ? 'Index' : 'Stock';
+        }
+        
+        const results = testData.map(item => ({
+            symbol: item.symbol,
+            segment: item.segment,
+            category: categorize(item)
+        }));
+        
+        document.getElementById('results').innerHTML = '<pre>' + 
+            JSON.stringify(results, null, 2) + 
+            '</pre>';
+        
+        console.log('Categorization test:', results);
+    </script>
+</body>
+</html>
