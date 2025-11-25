@@ -109,6 +109,7 @@ router.post('/orders', async (req, res) => {
         // Create position
         await createOrUpdatePosition({
           symbol_id: symbolData.symbol_id,
+          symbol: symbolData.symbol,
           quantity: transaction_type === 'BUY' ? quantity : -quantity,
           average_price: finalPrice,
           trading_mode: 'paper'
