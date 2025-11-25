@@ -206,7 +206,7 @@ router.post('/orders/cancel-all', async (req, res) => {
  * Helper function to create or update position
  */
 async function createOrUpdatePosition(data) {
-  const { symbol_id, quantity, average_price, trading_mode, broker_id } = data;
+  const { symbol_id, symbol, quantity, average_price, trading_mode, broker_id } = data;
 
   // Check if position exists
   let query = 'SELECT * FROM positions WHERE symbol_id = ? AND trading_mode = ?';
@@ -237,6 +237,7 @@ async function createOrUpdatePosition(data) {
       'INSERT INTO positions SET ?',
       {
         symbol_id,
+        symbol,
         quantity,
         average_price,
         trading_mode,

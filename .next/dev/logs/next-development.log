@@ -600,3 +600,11 @@
 [00:05:43.353] Browser LOG     [MarketContext] 📡 positionUpdate received: {"positionsCount":1,"sample":[{"exchange":"NSE","exchangeType":"NSE","lot_size":1,"ltp":0,"mode":3,"name":"Token_960051506","sequence":3904673859646783500,"symbol":"Token_960051506","symbolName":"Token_960051506","timestamp":"1970-01-01T00:00:00.000Z","token":960051506}]}
 [00:05:44.353] Browser LOG     [MarketContext] 📡 positionUpdate received: {"positionsCount":1,"sample":[{"exchange":"NSE","exchangeType":"NSE","lot_size":1,"ltp":0,"mode":3,"name":"Token_960051506","sequence":3904673859646783500,"symbol":"Token_960051506","symbolName":"Token_960051506","timestamp":"1970-01-01T00:00:00.000Z","token":960051506}]}
 [00:05:45.346] Browser LOG     [MarketContext] 📡 positionUpdate received: {"positionsCount":1,"sample":[{"exchange":"NSE","exchangeType":"NSE","lot_size":1,"ltp":0,"mode":3,"name":"Token_960051506","sequence":3904673859646783500,"symbol":"Token_960051506","symbolName":"Token_960051506","timestamp":"1970-01-01T00:00:00.000Z","token":960051506}]}
+[00:05:46.351] Browser LOG     Market: disconnected from position WebSocket server transport close
+[00:05:48.346] Browser LOG     Market: connected to position WebSocket server
+[00:05:49.359] Browser LOG     Market: disconnected from position WebSocket server transport close
+[00:05:52.350] Browser LOG     Market: connected to position WebSocket server
+[00:05:53.360] Browser LOG     Market: disconnected from position WebSocket server transport close
+[00:05:57.349] Browser LOG     Market: connected to position WebSocket server
+[00:06:14.349] Browser LOG     Market: disconnected from position WebSocket server transport close
+[00:06:16.354] Browser LOG     Market: connected to position WebSocket server
